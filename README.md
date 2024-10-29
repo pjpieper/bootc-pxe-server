@@ -1,3 +1,4 @@
+
 # Network Boot of RHEL Image Mode
 This project shows how to setup a PXE Server that supports PXE
 installations of a RHEL Image Mode bootable container image. This server
@@ -19,9 +20,16 @@ that discusses this approach.
 ## Prepare your network for a new DHCP server
 
 #### PJ's Comment:
-================================================================
-You can do this, but it seems redundant. The way he has setup the demo.conf tries to pull the IP from your first active ethernet connection IP. The problem is, for most of us at GTRI, you need the DHCP service to get internet in the first place, we have no way to reliably (see 'ever') to get an individual outside IP. So, we will skip this step.
-================================================================
+---
+
+> You can do this, but it seems redundant. The way he has setup the
+> demo.conf tries to pull the IP from your first active ethernet
+> connection IP. The problem is, for most of us at GTRI, you need the
+> DHCP service to get internet in the first place, we have no way to
+> reliably (see 'ever') to get an individual outside IP. So, we will
+> skip this step.
+
+---
 
 Since you're creating a new DHCP server, you need to make sure that there
 is no competing DHCP server on the target network. How to do this really
@@ -94,22 +102,33 @@ minimum, you should adjust the credentials for simple content access.
 The full list of options in the `demo.conf` file are shown here.
 
 #### PJ's Comment:
-================================================================
-For these settings, we will tweak only a handful of things. 
-
-SCA_USER and SCA_PASS should be your independent developer login credentials for Red Hat. Become a RHEL dev here: https://developers.redhat.com/?intcmp=701f20000012k6JAAQ 
-
-For EDGE_USER and EDGE_PASS, I am not certain if these need to be changed but I did change them to the target's computer's root login credentials. 
-
-Lastly under DHCP settings, we need to use the independent IP we setup on our internal network for the Server that this project will live on. The IP should be something that is accessible to both systems without outside conflicts. For example, internal IP range may be a 10.XXX.XXX.XXX for the net, we want a 192.168.XXX.XXX that is useable set to the interface being used between the Server and Target machines. 
-
-In short, replace:
-    $(ip route get 8.8.8.8 | awk '{print $7; exit}')
-With the IP you chose for your internal IP address:
-    192.168.XXX.XXX
-
-The rest of the scripts use the `demo.conf` file to setup the internal DHCP network.
-================================================================
+---
+> For these settings, we will tweak only a handful of things. 
+> 
+> SCA_USER and SCA_PASS should be your independent developer login
+> credentials for Red Hat. Become a RHEL dev here:
+> https://developers.redhat.com/?intcmp=701f20000012k6JAAQ 
+> 
+> For EDGE_USER and EDGE_PASS, I am not certain if these need to be
+> changed but I did change them to the target's computer's root login
+> credentials. 
+> 
+> Lastly under DHCP settings, we need to use the independent IP we setup
+> on our internal network for the Server that this project will live on.
+> The IP should be something that is accessible to both systems without
+> outside conflicts. For example, internal IP range may be a
+> 10.XXX.XXX.XXX for the net, we want a 192.168.XXX.XXX that is useable set to the interface being used between the Server and Target
+> machines. 
+> 
+> In short, replace:
+> `$(ip route get 8.8.8.8 | awk '{print $7; exit}') `
+> 
+> With the IP you chose for your internal IP address:
+> `192.168.XXX.XXX`
+> 
+> The rest of the scripts use the `demo.conf` file to setup the internal
+> DHCP network.
+---
 
 #### Red Hat Simple Content Access
 | Parameter | Description |
@@ -143,9 +162,10 @@ The rest of the scripts use the `demo.conf` file to setup the internal DHCP netw
 | BOOTC_KICKSTART  | The kickstart file to send to the PXE client |
 
 #### PJ's Comment:
-================================================================
-The following boot.iso file requires that RHEL Developer account aforementioned.
-================================================================
+---
+> The following boot.iso file requires that RHEL Developer account
+> aforementioned.
+---
 
 Make sure to download the `BOOT_ISO` file, e.g.
 [rhel-9.4-x86_64-boot.iso](https://access.redhat.com/downloads/content/rhel)
@@ -157,10 +177,12 @@ update the system.
     sudo reboot
 
 #### PJ's Comment:
-================================================================
-Unless otherwise noted past this point, use `sudo su` before running the following commands.
-================================================================
+---
 
+> Unless otherwise noted past this point, use `sudo su` before running
+> the following commands.
+
+---
 ### Install tooling to build a bootable container
 The network installation supports RHEL Image Mode, aka bootable
 containers. Install the tooling necessary to support creating a bootable
@@ -201,10 +223,10 @@ container image.
     podman push $CONTAINER_REPO:prod
 
 #### PJ's Comment:
-================================================================
-./gen-ks.sh is the one script you will use `exit` and run with normally without root, i.e. `sudo su`. 
-================================================================
-
+---
+> ./gen-ks.sh is the one script you will use `exit` and run with
+> normally without root, i.e. `sudo su`.
+---
 ### Create a kickstart for automated network installations
 Now, create the kickstart file that will be used to automate the
 installation of the client edge device via the network installation. Of
@@ -220,10 +242,9 @@ Review the generated file using the following command:
     less $BOOTC_KICKSTART
 
 #### PJ's Comment:
-================================================================
-Continue using root past this point, `sudo su`.
-================================================================
-
+---
+> Continue using root past this point, `sudo su`.
+---
 ### Create web server for kickstart and UEFI HTTP installs
 Set up a simple web server to host the kickstart file you previously
 generated as well as the kernel and initial ram disk for network
