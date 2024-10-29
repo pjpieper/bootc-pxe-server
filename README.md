@@ -180,7 +180,7 @@ update the system.
 ---
 
 > Unless otherwise noted past this point, use `sudo su` before running
-> the following commands.
+> the following commands. If you don't, it will fail with AVC denials.
 
 ---
 ### Install tooling to build a bootable container
