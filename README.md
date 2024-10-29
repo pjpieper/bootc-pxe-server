@@ -24,7 +24,7 @@ that discusses this approach.
 
 > You can do this, but it seems redundant. The way he has setup the
 > demo.conf tries to pull the IP from your first active ethernet
-> connection IP. The problem is, for most of us at GTRI, you need the
+> connection. The problem is, for most of us, we need the
 > DHCP service to get internet in the first place, we have no way to
 > reliably (see 'ever') to get an individual outside IP. So, we will
 > skip this step.
