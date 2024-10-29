@@ -18,7 +18,7 @@ that discusses this approach.
 
 ## Prepare your network for a new DHCP server
 
-###PJ's Comment:
+#### PJ's Comment:
 ================================================================
 You can do this, but it seems redundant. The way he has setup the demo.conf tries to pull the IP from your first active ethernet connection IP. The problem is, for most of us at GTRI, you need the DHCP service to get internet in the first place, we have no way to reliably (see 'ever') to get an individual outside IP. So, we will skip this step.
 ================================================================
@@ -93,7 +93,7 @@ Edit the `demo.conf` file and make sure the settings are correct. At a
 minimum, you should adjust the credentials for simple content access.
 The full list of options in the `demo.conf` file are shown here.
 
-###PJ's Comment:
+#### PJ's Comment:
 ================================================================
 For these settings, we will tweak only a handful of things. 
 
@@ -142,7 +142,7 @@ The rest of the scripts use the `demo.conf` file to setup the internal DHCP netw
 | REGISTRYINSECURE | Boolean for whether the registry requires TLS |
 | BOOTC_KICKSTART  | The kickstart file to send to the PXE client |
 
-###PJ's Comment:
+#### PJ's Comment:
 ================================================================
 The following boot.iso file requires that RHEL Developer account aforementioned.
 ================================================================
@@ -156,7 +156,7 @@ update the system.
     sudo ./register-and-update.sh
     sudo reboot
 
-###PJ's Comment:
+#### PJ's Comment:
 ================================================================
 Unless otherwise noted past this point, use `sudo su` before running the following commands.
 ================================================================
@@ -200,7 +200,7 @@ container image.
     podman tag $CONTAINER_REPO:v1 $CONTAINER_REPO:prod
     podman push $CONTAINER_REPO:prod
 
-###PJ's Comment:
+#### PJ's Comment:
 ================================================================
 ./gen-ks.sh is the one script you will use `exit` and run with normally without root, i.e. `sudo su`. 
 ================================================================
@@ -219,7 +219,7 @@ Review the generated file using the following command:
     . demo.conf
     less $BOOTC_KICKSTART
 
-###PJ's Comment:
+#### PJ's Comment:
 ================================================================
 Continue using root past this point, `sudo su`.
 ================================================================
