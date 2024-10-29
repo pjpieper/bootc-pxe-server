@@ -110,7 +110,7 @@ The full list of options in the `demo.conf` file are shown here.
 > https://developers.redhat.com/?intcmp=701f20000012k6JAAQ 
 > 
 > For EDGE_USER and EDGE_PASS, I am not certain if these need to be
-> changed but I did change them to the target's computer's root login
+> changed but I did change them to the target computer's root login
 > credentials. 
 > 
 > Lastly under DHCP settings, we need to use the independent IP we setup
