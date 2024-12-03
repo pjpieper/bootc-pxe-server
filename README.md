@@ -109,9 +109,7 @@ The full list of options in the `demo.conf` file are shown here.
 > credentials for Red Hat. Become a RHEL dev here:
 > https://developers.redhat.com/?intcmp=701f20000012k6JAAQ 
 > 
-> For EDGE_USER and EDGE_PASS, I am not certain if these need to be
-> changed but I did change them to the target computer's root login
-> credentials. 
+> For EDGE_USER and EDGE_PASS, these need not be changed, but do not set them to ROOT or you will have a fun time (see: horrible).
 > 
 > Lastly under DHCP settings, we need to use the independent IP we setup
 > on our internal network for the Server that this project will live on.
